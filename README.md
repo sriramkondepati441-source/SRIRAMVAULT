@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SriramVault 🛡️
 
-## Getting Started
+**SriramVault** is a secure, personal digital document management platform. It acts as a trusted, centralized vault where a user can securely store, organize, find, and retrieve highly sensitive personal documents (such as Identity Cards, Marksheets, and Financial Certificates) from a phone or computer.
 
-First, run the development server:
+## 🌟 Core Objective
+To eliminate the stress of scrambling for documents during critical moments (e.g., visiting a government office, college admissions, or bank appointments). SriramVault ensures all necessary documents are securely stored, properly categorized, and instantly accessible.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Key Features
+- **Secure File Storage:** End-to-end local storage mechanism ensuring private documents never leave the host machine unencrypted.
+- **Dynamic Categorization:** Automatically organizes documents into logical folders (Identity, Education, Finance, College, Career).
+- **Requirement Checklists:** Built-in task managers to track missing documents for specific applications (e.g., College Scholarship Applications).
+- **Premium UI/UX:** A stunning, responsive interface built with Glassmorphism design principles, dynamic animations, and an intuitive dark mode theme.
+- **Emergency Quick Access:** A dedicated modal to instantly retrieve the most critical, frequently used documents.
+- **Advanced Search & Filtering:** Instantly locate documents by name, tag, or category.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technology Stack
+- **Frontend:** Next.js 14, React, Tailwind CSS
+- **Icons & UI:** Lucide React
+- **Backend (Current):** Next.js Server Actions / API Routes with a local JSON Database (`local_db.json`) and local disk storage (`/private_storage`).
+- **Backend (Planned):** Supabase (PostgreSQL) for cloud sync and authentication.
+- **Security (Planned):** Blockchain-based file hashing to ensure zero data tampering.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/SriramVault.git
+   cd SriramVault
+   ```
 
-## Learn More
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🗺️ Roadmap & Phases
+- **Phase 1-2 (Completed):** Architecture, UI Design, and Core Layouts.
+- **Phase 3-4 (Completed):** Frontend interactivity, dynamic categories, and local backend implementation.
+- **Phase 5 (Upcoming):** Cloud migration to Supabase (Auth, Storage, Database).
+- **Phase 6 (Upcoming):** Advanced Security (End-to-End Encryption and Blockchain hashing).
