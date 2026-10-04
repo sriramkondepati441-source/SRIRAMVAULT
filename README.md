@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SriramVault 🛡️
 
 **SriramVault** is a secure, personal digital document management platform. It acts as a trusted, centralized vault where a user can securely store, organize, find, and retrieve highly sensitive personal documents (such as Identity Cards, Marksheets, and Financial Certificates) from a phone or computer.
@@ -45,3 +46,7 @@ To eliminate the stress of scrambling for documents during critical moments (e.g
 - **Phase 3-4 (Completed):** Frontend interactivity, dynamic categories, and local backend implementation.
 - **Phase 5 (Upcoming):** Cloud migration to Supabase (Auth, Storage, Database).
 - **Phase 6 (Upcoming):** Advanced Security (End-to-End Encryption and Blockchain hashing).
+=======
+# SRIRAMVAULT
+SriramVault is a secure, personal digital document management platform. It acts as a trusted, centralized vault where a user can securely store, organize, find, and retrieve highly sensitive personal documents (such as Identity Cards, Marksheets, and Financial Certificates) from a phone or computer.
+>>>>>>> b2dc9a767cc24cebc1089fa93e1c78449f958f4e
