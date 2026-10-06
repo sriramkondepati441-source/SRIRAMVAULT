@@ -1,6 +1,6 @@
 "use client"
 import { Search, Bell, Menu, User, Zap, Settings, LogOut, ShieldAlert, X } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 
 export default function Header() {
@@ -8,9 +8,22 @@ export default function Header() {
   const [showProfile, setShowProfile] = useState(false)
   const [showQuickAccess, setShowQuickAccess] = useState(false)
   const router = useRouter()
+  const headerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setShowNotifications(false)
+        setShowProfile(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   return (
-    <header className="h-16 border-b border-border bg-card/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-10">
+    <>
+      <header ref={headerRef} className="h-16 border-b border-border bg-card/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-10">
       <div className="flex items-center gap-4">
         <button className="md:hidden text-muted-foreground hover:text-foreground">
           <Menu className="w-6 h-6" />
@@ -33,37 +46,6 @@ export default function Header() {
           <Zap className="w-4 h-4 fill-current" />
           <span>Quick Access</span>
         </button>
-
-        {/* QUICK ACCESS MODAL */}
-        {showQuickAccess && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in">
-            <div className="bg-card border border-border w-full max-w-lg rounded-xl shadow-2xl p-6 relative">
-              <button 
-                onClick={() => setShowQuickAccess(false)}
-                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              <h2 className="text-xl font-bold mb-1 flex items-center gap-2"><Zap className="w-5 h-5 text-amber-500" /> Emergency Quick Access</h2>
-              <p className="text-sm text-muted-foreground mb-6">Instantly retrieve your most critical documents without navigating.</p>
-              
-              <div className="space-y-3">
-                <button onClick={() => router.push('/category/identity')} className="w-full text-left p-3 border border-border rounded-lg hover:bg-muted transition-colors flex justify-between items-center">
-                  <span className="font-medium">Identity Documents (Aadhaar, PAN)</span>
-                  <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">Secure</span>
-                </button>
-                <button onClick={() => router.push('/category/education')} className="w-full text-left p-3 border border-border rounded-lg hover:bg-muted transition-colors flex justify-between items-center">
-                  <span className="font-medium">Education Records (Marksheets)</span>
-                  <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">Secure</span>
-                </button>
-                <button onClick={() => router.push('/category/finance')} className="w-full text-left p-3 border border-border rounded-lg hover:bg-muted transition-colors flex justify-between items-center">
-                  <span className="font-medium">Finance (Income Certificates)</span>
-                  <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">Secure</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
         
         {/* NOTIFICATIONS */}
         <div className="relative">
@@ -139,5 +121,37 @@ export default function Header() {
         </div>
       </div>
     </header>
+
+    {/* QUICK ACCESS MODAL */}
+    {showQuickAccess && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in" onClick={() => setShowQuickAccess(false)}>
+        <div className="bg-card border border-border w-full max-w-lg rounded-xl shadow-2xl p-6 relative" onClick={(e) => e.stopPropagation()}>
+          <button 
+            onClick={() => setShowQuickAccess(false)}
+            className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <h2 className="text-xl font-bold mb-1 flex items-center gap-2"><Zap className="w-5 h-5 text-amber-500" /> Emergency Quick Access</h2>
+          <p className="text-sm text-muted-foreground mb-6">Instantly retrieve your most critical documents without navigating.</p>
+          
+          <div className="space-y-3">
+            <button onClick={() => { setShowQuickAccess(false); router.push('/category/identity'); }} className="w-full text-left p-3 border border-border rounded-lg hover:bg-muted transition-colors flex justify-between items-center">
+              <span className="font-medium">Identity Documents (Aadhaar, PAN)</span>
+              <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">Secure</span>
+            </button>
+            <button onClick={() => { setShowQuickAccess(false); router.push('/category/education'); }} className="w-full text-left p-3 border border-border rounded-lg hover:bg-muted transition-colors flex justify-between items-center">
+              <span className="font-medium">Education Records (Marksheets)</span>
+              <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">Secure</span>
+            </button>
+            <button onClick={() => { setShowQuickAccess(false); router.push('/category/finance'); }} className="w-full text-left p-3 border border-border rounded-lg hover:bg-muted transition-colors flex justify-between items-center">
+              <span className="font-medium">Finance (Income Certificates)</span>
+              <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">Secure</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }

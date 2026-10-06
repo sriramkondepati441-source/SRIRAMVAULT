@@ -7,7 +7,7 @@ import Header from "@/components/layout/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SriramVault | Secure Personal Document Management",
+  title: "Inflix Vault | Secure Personal Document Management",
   description: "Securely store, organize, find, verify, and retrieve personal documents.",
 };
 

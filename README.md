@@ -1,52 +1,66 @@
-<<<<<<< HEAD
-# SriramVault 🛡️
+# SriramVault
 
-**SriramVault** is a secure, personal digital document management platform. It acts as a trusted, centralized vault where a user can securely store, organize, find, and retrieve highly sensitive personal documents (such as Identity Cards, Marksheets, and Financial Certificates) from a phone or computer.
+SriramVault is a highly secure, tenant-isolated personal document manager built with Next.js 15, Tailwind CSS, and Supabase.
 
-## 🌟 Core Objective
-To eliminate the stress of scrambling for documents during critical moments (e.g., visiting a government office, college admissions, or bank appointments). SriramVault ensures all necessary documents are securely stored, properly categorized, and instantly accessible.
+## Features
+- **Strict Row Level Security (RLS)**: Documents and folders are completely isolated per user.
+- **Secure File Handling**: Magic byte validation (PDF, JPG, PNG only) and 10MB limits enforced server-side.
+- **Short-Lived Signed URLs**: Files are served via 60-second signed URLs to prevent public access.
+- **Modern Authentication**: Supabase SSR cookies with strict HttpOnly, Secure, and SameSite policies.
+- **Beautiful UI**: Modern glassmorphism UI with dark mode support built via Tailwind CSS.
 
-## ✨ Key Features
-- **Secure File Storage:** End-to-end local storage mechanism ensuring private documents never leave the host machine unencrypted.
-- **Dynamic Categorization:** Automatically organizes documents into logical folders (Identity, Education, Finance, College, Career).
-- **Requirement Checklists:** Built-in task managers to track missing documents for specific applications (e.g., College Scholarship Applications).
-- **Premium UI/UX:** A stunning, responsive interface built with Glassmorphism design principles, dynamic animations, and an intuitive dark mode theme.
-- **Emergency Quick Access:** A dedicated modal to instantly retrieve the most critical, frequently used documents.
-- **Advanced Search & Filtering:** Instantly locate documents by name, tag, or category.
+---
 
-## 🛠️ Technology Stack
-- **Frontend:** Next.js 14, React, Tailwind CSS
-- **Icons & UI:** Lucide React
-- **Backend (Current):** Next.js Server Actions / API Routes with a local JSON Database (`local_db.json`) and local disk storage (`/private_storage`).
-- **Backend (Planned):** Supabase (PostgreSQL) for cloud sync and authentication.
-- **Security (Planned):** Blockchain-based file hashing to ensure zero data tampering.
+## Windows Setup Guide
 
-## 🚀 Getting Started Locally
+Follow these exact steps to run SriramVault on your local Windows machine.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/SriramVault.git
-   cd SriramVault
-   ```
+### Prerequisites
+1. **Install Node.js**: Download and install the latest LTS version of Node.js for Windows from [nodejs.org](https://nodejs.org/).
+2. **Git**: Ensure Git is installed (comes with Git Bash for Windows).
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+### 1. Installation
+Open your Command Prompt or PowerShell, navigate to your desired directory, and clone the project:
 
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+```cmd
+git clone https://github.com/your-username/sriramvault.git
+cd sriramvault
+```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Install the required dependencies:
+```cmd
+npm install
+```
 
-## 🗺️ Roadmap & Phases
-- **Phase 1-2 (Completed):** Architecture, UI Design, and Core Layouts.
-- **Phase 3-4 (Completed):** Frontend interactivity, dynamic categories, and local backend implementation.
-- **Phase 5 (Upcoming):** Cloud migration to Supabase (Auth, Storage, Database).
-- **Phase 6 (Upcoming):** Advanced Security (End-to-End Encryption and Blockchain hashing).
-=======
-# SRIRAMVAULT
-SriramVault is a secure, personal digital document management platform. It acts as a trusted, centralized vault where a user can securely store, organize, find, and retrieve highly sensitive personal documents (such as Identity Cards, Marksheets, and Financial Certificates) from a phone or computer.
->>>>>>> b2dc9a767cc24cebc1089fa93e1c78449f958f4e
+### 2. Environment Setup
+1. Create a `.env` file in the root of the project.
+2. Paste your Supabase API keys into it:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+SITE_URL=http://localhost:3000
+```
+
+### 3. Start the Development Server
+Run the Next.js development server:
+
+```cmd
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser. You will be redirected to the secure login page.
+
+---
+
+## Deployment (Vercel)
+
+SriramVault is optimized for Vercel deployment.
+
+1. Push your code to a GitHub repository.
+2. Log into [Vercel](https://vercel.com/) and create a **New Project**.
+3. Import your GitHub repository.
+4. Go to the **Environment Variables** tab and paste the exact keys from your `.env` file (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SITE_URL`). Update `SITE_URL` to your live Vercel domain.
+5. Click **Deploy**.
+6. **Important**: Go to your Supabase Dashboard -> Authentication -> URL Configuration, and add your new Vercel domain to the "Site URL" and "Redirect URLs" lists so authentication redirects work seamlessly in production.

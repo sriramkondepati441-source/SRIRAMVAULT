@@ -8,9 +8,9 @@ export default function Sidebar() {
       <div className="p-6">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-8 h-8 rounded-md overflow-hidden bg-primary/10">
-            <Image src="/logo.jpg" alt="SriramVault Logo" fill sizes="32px" className="object-cover" />
+            <Image src="/logo.jpg" alt="Inflix Vault Logo" fill sizes="32px" className="object-cover" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">Sriram<span className="text-primary">Vault</span></span>
+          <span className="text-xl font-bold tracking-tight text-foreground">Inflix<span className="text-primary">Vault</span></span>
         </Link>
       </div>
 
@@ -40,9 +40,9 @@ export default function Sidebar() {
         <div className="bg-muted rounded-lg p-4 flex flex-col items-center text-center">
           <p className="text-sm font-medium mb-1">Storage Usage</p>
           <div className="w-full bg-secondary rounded-full h-2 mb-2">
-            <div className="bg-primary h-2 rounded-full" style={{ width: "45%" }}></div>
+            <div className="bg-primary h-2 rounded-full" style={{ width: "0%" }}></div>
           </div>
-          <p className="text-xs text-muted-foreground">4.5 GB of 10 GB used</p>
+          <p className="text-xs text-muted-foreground">0 GB of 10 GB used</p>
         </div>
         <button className="flex items-center gap-3 text-muted-foreground hover:text-foreground w-full p-2 mt-4 transition-colors">
           <LogOut className="w-5 h-5" />
